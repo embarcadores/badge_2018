@@ -1,0 +1,35 @@
+
+#n/** Configure pins as #n #t#t #t* Analog #n #t#t #t* Input #n #t#t #t* Output#n #t#t #t* EVENT_OUT#n #t#t #t* EXTI#n #t#t #t* Free pins are configured automatically as Analog (this feature is enabled through #n #t#t #t* the Code Generation settings)
+*/
+static void MX_GPIO_Init(void)
+{
+#n
+#tGPIO_InitTypeDef GPIO_InitStruct;
+#n#t/* GPIO Ports Clock Enable */
+#t__HAL_RCC_GPIOF_CLK_ENABLE();
+#t__HAL_RCC_GPIOA_CLK_ENABLE();
+#t__HAL_RCC_GPIOB_CLK_ENABLE();
+#n#t/*Configure GPIO pin Output Level */
+#tHAL_GPIO_WritePin(TXD_GPIO_Port, TXD_Pin, GPIO_PIN_RESET);
+#n#t/*Configure GPIO pin Output Level */
+#tHAL_GPIO_WritePin(GPIOA, SWRIGHT_Pin|SWLEFT_Pin|SWDOWN_Pin|SWUP_Pin #n#t#t#t#t#t#t#t#t#t#t#t#t#t|SWMENU_Pin|DSP_HOLD_Pin, GPIO_PIN_RESET);
+#n#t/*Configure GPIO pin : RXD_Pin */
+#tGPIO_InitStruct.Pin = RXD_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tHAL_GPIO_Init(RXD_GPIO_Port, &GPIO_InitStruct);
+#n#t/*Configure GPIO pin : TXD_Pin */
+#tGPIO_InitStruct.Pin = TXD_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tGPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+#tHAL_GPIO_Init(TXD_GPIO_Port, &GPIO_InitStruct);
+#n#t/*Configure GPIO pins : SWRIGHT_Pin SWLEFT_Pin SWDOWN_Pin SWUP_Pin #n#t#t#t#t#t#t#t#t#t#t#t#t#t SWMENU_Pin DSP_HOLD_Pin */
+#tGPIO_InitStruct.Pin = SWRIGHT_Pin|SWLEFT_Pin|SWDOWN_Pin|SWUP_Pin #n#t#t#t#t#t#t#t#t#t#t#t#t#t|SWMENU_Pin|DSP_HOLD_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tGPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+#tHAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+#n
+}
+#n

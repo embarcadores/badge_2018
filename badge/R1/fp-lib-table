@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name mods)(type KiCad)(uri /home/marcelo/Desktop/dados/bitbucket/embarcadores/eCom2018/badge/mods.pretty)(options "")(descr ""))
+)
